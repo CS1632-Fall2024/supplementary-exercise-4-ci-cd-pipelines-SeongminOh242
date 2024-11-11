@@ -19,6 +19,25 @@ public class RentACatImpl implements RentACat {
 
 	public boolean returnCat(int id) {
 		// TODO: Fill in
+		// for (Cat cat : cats) {
+		// 	if (cat.getId() == id && cat.getRented()) {
+		// 		cat.returnCat(); // Call the returnCat method on the cat
+		// 		return true; // Cat exists and was rented out
+		// 	}
+		// }
+		// return false;
+		for (Cat cat : cats) {
+			if (cat.getId() == id) {
+				if (!cat.getRented()) {
+					// Change the message to match the expected output
+					System.out.println(cat.getName() + " is already here!");
+					return false;
+				}
+				cat.returnCat();
+				System.out.println("Welcome back, " + cat.getName() + "!");
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -34,7 +53,26 @@ public class RentACatImpl implements RentACat {
 
 	public boolean rentCat(int id) {
 		// TODO: Fill in
+		// for (Cat cat : cats) {
+		// 	if (cat.getId() == id && !cat.getRented()) {
+		// 		cat.rentCat(); // Call the returnCat method on the cat
+		// 		return true; // Cat exists and was rented out
+		// 	}
+		// }
+		// return false;
+		for (Cat cat : cats) {
+			if (cat.getId() == id) {
+				if (cat.getRented()) {
+					System.out.println("Sorry, " + cat.getName() + " is not here!");
+					return false;
+				}
+				cat.rentCat(); 
+				System.out.println(cat.getName() + " has been rented.");
+				return true; 
+			}
+		}
 		return false;
+	
 	}
 
 	/**
@@ -47,8 +85,14 @@ public class RentACatImpl implements RentACat {
 	 */
 
 	public boolean renameCat(int id, String name) {
-		// TODO: Fill in
-		return false;
+
+		Cat cat = getCat(id);
+		if (cat == null) {
+			// System.out.println("Invalid cat ID.");
+			return false;
+		}
+		cat.renameCat(name); // Rename the cat
+		return true; // Return true after renaming
 	}
 
 	/**
@@ -62,8 +106,30 @@ public class RentACatImpl implements RentACat {
 	 */
 
 	public String listCats() {
-		// TODO: Fill in
-		return "WRITE CODE FOR THIS";
+		// Return null if cats is null
+		if (cats == null) {
+			return null;
+		}
+	
+		StringBuilder catList = new StringBuilder();
+		boolean firstCat = true;
+	
+		for (Cat cat : cats) {
+			if (!cat.getRented()) {
+				if (!firstCat) {
+					catList.append(System.lineSeparator());
+				}
+				catList.append(cat.toString());
+				firstCat = false;
+			}
+		}
+	
+		// Add a final line separator if there was at least one rentable cat
+		if (catList.length() > 0) {
+			catList.append(System.lineSeparator());
+		}
+	
+		return catList.toString();
 	}
 
 	/**
@@ -95,7 +161,6 @@ public class RentACatImpl implements RentACat {
 		// ID, then the cat is not in the list
 		System.out.println("Invalid cat ID.");
 		return null;
-
 	}
 
 	/**
