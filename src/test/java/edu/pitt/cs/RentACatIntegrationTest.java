@@ -51,14 +51,14 @@ public class RentACatIntegrationTest {
 		// Passing InstanceType.MOCK as the first parameter will create a mock cat using Mockito.
 		// Which type is the correct choice for this integration test?  Again, I'll leave it up to you.
 		// TODO: Fill in
-		c1 = Cat.createInstance(InstanceType.MOCK, 1, "Jennyanydots");
+		c1 = Cat.createInstance(InstanceType.IMPL, 1, "Jennyanydots");
 
 		// 3. Create a Cat with ID 2 and name "Old Deuteronomy", assign to c2 using a call to Cat.createInstance(InstanceType, int, String).
 		// TODO: Fill in
-		c2 = Cat.createInstance(InstanceType.MOCK, 2, "Old Deuteronomy");
+		c2 = Cat.createInstance(InstanceType.IMPL, 2, "Old Deuteronomy");
 		// 4. Create a Cat with ID 3 and name "Mistoffelees", assign to c3 using a call to Cat.createInstance(InstanceType, int, String).
 		// TODO: Fill in
-		c3 = Cat.createInstance(InstanceType.MOCK, 3, "Mistoffelees");
+		c3 = Cat.createInstance(InstanceType.IMPL, 3, "Mistoffelees");
 		// 5. Redirect system output from stdout to the "out" stream
 		// First, make a back up of System.out (which is the stdout to the console)
 		stdout = System.out;
