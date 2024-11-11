@@ -26,7 +26,7 @@ public class RentACatUnitTest {
 	 * objects used as a baseline for running tests. The test fixture is initialized
 	 * using the @Before setUp method which runs before every test case. The test
 	 * fixture is removed using the @After tearDown method which runs after each
-	 * test case.asdfsd
+	 * test case.
 	 */
 
 	RentACat r; // Object to test
@@ -133,11 +133,12 @@ public class RentACatUnitTest {
 	@Test
 	public void testGetCatNumCats3() {
 		try {
+			Method m = r.getClass().getDeclaredMethod("getCat", int.class);
+
 			r.addCat(c1);
 			r.addCat(c2);
 			r.addCat(c3);
 
-			Method m = r.getClass().getDeclaredMethod("getCat", int.class);
 			m.setAccessible(true);
 
 			Object ret = m.invoke(r, 2);
@@ -340,7 +341,7 @@ public class RentACatUnitTest {
 	@Test
 	public void testReturnCatNumCats3() {
 
-		// Cat c2 = Mockito.mock(Cat.class);
+		Cat c2 = Mockito.mock(Cat.class);
 		Mockito.when(c2.getId()).thenReturn(2);
 		Mockito.when(c2.getName()).thenReturn("Old Deuteronomy");
 		Mockito.when(c2.getRented()).thenReturn(true);
@@ -351,9 +352,7 @@ public class RentACatUnitTest {
 		r.addCat(c3);
 
 		boolean result = r.returnCat(2);
-		
-		// Mockito.verify(c2).getRented();
-
+		Mockito.verify(c2).getRented();
 		assertTrue(result);
 		assertEquals("Welcome back, Old Deuteronomy!"+ System.lineSeparator(), out.toString());
    		
@@ -377,7 +376,7 @@ public class RentACatUnitTest {
 	@Test
 	public void testReturnFailureCatNumCats3() {
 
-		// Cat c2 = Mockito.mock(Cat.class);
+		Cat c2 = Mockito.mock(Cat.class);
 		Mockito.when(c2.getId()).thenReturn(2);
 		Mockito.when(c2.getName()).thenReturn("Old Deuteronomy");
 		Mockito.when(c2.getRented()).thenReturn(false);
@@ -390,8 +389,6 @@ public class RentACatUnitTest {
 		boolean result = r.returnCat(2);
 
 		String expectedOutput = "Old Deuteronomy is already here!\n";
-		Mockito.verify(c2).getRented();
-
 		assertFalse(result);
 		assertEquals("Old Deuteronomy is already here!"+ System.lineSeparator(), out.toString());
 	}
