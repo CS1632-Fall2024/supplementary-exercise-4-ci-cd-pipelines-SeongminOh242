@@ -26,7 +26,7 @@ public class RentACatUnitTest {
 	 * objects used as a baseline for running tests. The test fixture is initialized
 	 * using the @Before setUp method which runs before every test case. The test
 	 * fixture is removed using the @After tearDown method which runs after each
-	 * test case.
+	 * test case.asdfsd
 	 */
 
 	RentACat r; // Object to test
