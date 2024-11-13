@@ -51,6 +51,11 @@
     <maven-javadoc-plugin.version>3.11.1</maven-javadoc-plugin.version>
   </properties>
 
+  <properties>
+    <sonar.organization>cs1632-fall2024</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  </properties>
+
   <dependencies>
 
     <dependency>
