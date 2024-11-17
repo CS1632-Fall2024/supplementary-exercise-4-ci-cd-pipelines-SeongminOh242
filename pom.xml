@@ -44,9 +44,11 @@
   </distributionManagement>
 
   <properties>
+    <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version> <!-- Add this line -->
     <sonar.organization>cs1632-fall2024</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
+
 
   <dependencies>
 
